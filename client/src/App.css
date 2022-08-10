@@ -1,0 +1,11 @@
+.raceProgress {
+  list-style: none;
+}
+.racePage {
+  padding: 100px 0;
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+}
+.racePageContent {
+  grid-column: 2;
+}
