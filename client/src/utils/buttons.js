@@ -4,9 +4,9 @@ import { Button } from "@mui/material";
 export const theme = createTheme({
   palette: {
     primary: {
-      main: "#303f9f",
-      light: "#3f51b5",
-      dark: "#1a237e",
+      main: "#1b28cc",
+      light: "#828af5",
+      dark: "#000caf",
       contrastText: "#ffffff",
     },
   },

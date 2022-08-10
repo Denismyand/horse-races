@@ -93,6 +93,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="racePage">
+        <h1 className="header">Horse racing</h1>
         <div className="raceContent">
           {raceProgress ? (
             <ul className="raceProgress">
@@ -109,14 +110,24 @@ export default function App() {
                 <li key={horse.name} className="horseStats">
                   <p>{horse.name}</p>
                   <p>{horse.distance >= 1000 ? "Finished" : horse.distance}</p>
-                  {horse.placement && <p>{getSuffix(horse.placement)}</p>}
+                  {horse.placement && (
+                    <p
+                      className={
+                        (horse.placement === 1 ? "medal firstPlace" : null) ||
+                        (horse.placement === 2 ? "medal secondPlace" : null) ||
+                        (horse.placement === 3 ? "medal thirdPlace" : null)
+                      }
+                    >
+                      {getSuffix(horse.placement)}
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>
           ) : (
             <div className="noRaceText">
               <div>
-                <h1>There is no race in progress</h1>
+                <h2>There is no race in progress</h2>
                 <p>Please click "Start race" to start the race</p>
               </div>
             </div>
