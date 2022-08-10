@@ -13,6 +13,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 8fr 1fr;
   grid-template-rows: minmax(100px, auto);
+  grid-gap: 20px;
 }
 .raceContent {
   position: relative;
@@ -20,6 +21,7 @@ body {
   grid-row: 2;
   background-color: #4557b1;
   min-height: 450px;
+  border-radius: 5px;
 }
 .noRaceText {
   display: grid;
@@ -27,7 +29,7 @@ body {
   grid-template-rows: 2fr 1fr 2fr;
 }
 .noRaceText * {
-  padding: 5px 0;
+  padding: 3px 0;
   grid-column: 2;
   grid-row: 2;
   text-align: center;

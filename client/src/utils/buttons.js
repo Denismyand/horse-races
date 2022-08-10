@@ -20,16 +20,30 @@ export function StartRaceButton({ onClick }) {
         width: "250px",
         fontSize: "20px",
         textTransform: "none",
-        gridColumn: "2",
-        gridRow:"3",
-        justifySelf:"right",
-        marginTop: "20px",
       }}
       variant="contained"
       color="primary"
       onClick={onClick}
     >
       Start Race
+    </Button>
+  );
+}
+
+export function EndRaceButton({ onClick }) {
+  return (
+    <Button
+      sx={{
+        height: "60px",
+        width: "250px",
+        fontSize: "20px",
+        textTransform: "none",
+      }}
+      variant="contained"
+      color="error"
+      onClick={onClick}
+    >
+      End Race
     </Button>
   );
 }

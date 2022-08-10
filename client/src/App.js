@@ -1,8 +1,8 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
-import { ThemeProvider } from "@mui/system";
-import { theme, StartRaceButton } from "./utils/buttons.js";
+import { ThemeProvider, Stack } from "@mui/system";
+import { theme, StartRaceButton, EndRaceButton } from "./utils/buttons.js";
 
 export default function App() {
   const [socket, setSocket] = useState(null);
@@ -11,6 +11,7 @@ export default function App() {
   const startRace = () => {
     socket.emit("start");
   };
+
   const stopTimer = () => {
     socket.disconnect();
     socket.connect("http://localhost:3002");
@@ -74,10 +75,15 @@ export default function App() {
     return i + "th";
   }
 
-  function resetRace() {
+  function handleStartRace() {
     stopTimer();
     startRace();
     getRace();
+  }
+
+  function handleEndRace() {
+    stopTimer();
+    setRaceProgress(null);
   }
 
   useEffect(() => {
@@ -90,9 +96,15 @@ export default function App() {
         <div className="raceContent">
           {raceProgress ? (
             <ul className="raceProgress">
-              <p><b>{"Horse name"}</b></p>
-              <p><b>{"Distance traveled"}</b></p>
-              <p><b>{"Placement"}</b></p>
+              <p>
+                <b>{"Horse name"}</b>
+              </p>
+              <p>
+                <b>{"Distance traveled"}</b>
+              </p>
+              <p>
+                <b>{"Placement"}</b>
+              </p>
               {raceProgress.map((horse) => (
                 <li key={horse.name} className="horseStats">
                   <p>{horse.name}</p>
@@ -110,7 +122,14 @@ export default function App() {
             </div>
           )}
         </div>
-        <StartRaceButton onClick={resetRace} />
+        <Stack
+          direction="row"
+          sx={{ gridColumn: "2", gridRow: "3", justifySelf: "right" }}
+          spacing="20px"
+        >
+          <EndRaceButton onClick={handleEndRace} />
+          <StartRaceButton onClick={handleStartRace} />
+        </Stack>
       </div>
     </ThemeProvider>
   );
