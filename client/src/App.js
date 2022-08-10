@@ -59,6 +59,21 @@ export default function App() {
     });
   };
 
+  function getSuffix(i) {
+    let j = i % 10,
+      k = i % 100;
+    if (j === 1 && k !== 11) {
+      return i + "st";
+    }
+    if (j === 2 && k !== 12) {
+      return i + "nd";
+    }
+    if (j === 3 && k !== 13) {
+      return i + "rd";
+    }
+    return i + "th";
+  }
+
   function resetRace() {
     stopTimer();
     startRace();
@@ -75,22 +90,27 @@ export default function App() {
         <div className="raceContent">
           {raceProgress ? (
             <ul className="raceProgress">
-              <p>{"Horse name"}</p>
-              <p>{"Distance traveled"}</p>
-              <p>{"Placement"}</p>
+              <p><b>{"Horse name"}</b></p>
+              <p><b>{"Distance traveled"}</b></p>
+              <p><b>{"Placement"}</b></p>
               {raceProgress.map((horse) => (
                 <li key={horse.name} className="horseStats">
-                  <p>{ horse.name}</p>
-                  <p>{horse.distance}</p>
-                  {horse.placement && <p>{horse.placement}</p>}
+                  <p>{horse.name}</p>
+                  <p>{horse.distance >= 1000 ? "Finished" : horse.distance}</p>
+                  {horse.placement && <p>{getSuffix(horse.placement)}</p>}
                 </li>
               ))}
             </ul>
           ) : (
-            <h1>nothing to show </h1>
+            <div className="noRaceText">
+              <div>
+                <h1>There is no race in progress</h1>
+                <p>Please click "Start race" to start the race</p>
+              </div>
+            </div>
           )}
         </div>
-          <StartRaceButton onClick={resetRace} />
+        <StartRaceButton onClick={resetRace} />
       </div>
     </ThemeProvider>
   );

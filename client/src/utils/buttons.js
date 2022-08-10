@@ -17,13 +17,13 @@ export function StartRaceButton({ onClick }) {
     <Button
       sx={{
         height: "60px",
-        width: "200px",
+        width: "250px",
         fontSize: "20px",
         textTransform: "none",
         gridColumn: "2",
         gridRow:"3",
         justifySelf:"right",
-        marginTop: "10px",
+        marginTop: "20px",
       }}
       variant="contained"
       color="primary"

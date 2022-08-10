@@ -3,6 +3,9 @@
   padding: 0;
   color: #fff;
 }
+p {
+  font-size: 18px;
+}
 body {
   background-color: #040a46;
 }
@@ -16,7 +19,18 @@ body {
   grid-column: 2;
   grid-row: 2;
   background-color: #4557b1;
-  height: 400px;
+  min-height: 450px;
+}
+.noRaceText {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 2fr 1fr 2fr;
+}
+.noRaceText * {
+  padding: 5px 0;
+  grid-column: 2;
+  grid-row: 2;
+  text-align: center;
 }
 
 .raceProgress {
@@ -25,8 +39,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   text-align: center;
-  font-size: 18px;
-  grid-row-gap: 10px;
+  grid-row-gap: 20px;
 }
 .horseStats {
   grid-column: 1/4;
