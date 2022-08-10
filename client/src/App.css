@@ -1,11 +1,44 @@
-.raceProgress {
-  list-style: none;
+* {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+body {
+  background-color: #040a46;
 }
 .racePage {
-  padding: 100px 0;
   display: grid;
   grid-template-columns: 1fr 8fr 1fr;
+  grid-template-rows: minmax(100px, auto);
 }
-.racePageContent {
+.raceContent {
+  position: relative;
   grid-column: 2;
+  grid-row: 2;
+  background-color: #4557b1;
+  height: 400px;
+}
+
+.raceProgress {
+  list-style: none;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  font-size: 18px;
+  grid-row-gap: 10px;
+}
+.horseStats {
+  grid-column: 1/4;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  font-size: 18px;
+  padding: 10px 5px;
+}
+.horseStats:nth-child(2n + 1) {
+  background-color: #060c4e;
+}
+.horseStats:nth-child(2n) {
+  background-color: #134da3;
 }

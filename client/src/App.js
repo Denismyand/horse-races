@@ -1,6 +1,8 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
+import { ThemeProvider } from "@mui/system";
+import { theme, StartRaceButton } from "./utils/buttons.js";
 
 export default function App() {
   const [socket, setSocket] = useState(null);
@@ -68,25 +70,28 @@ export default function App() {
   }, []);
 
   return (
-    <div className="racePage">
-      <div className="racePageContent">
-        {raceProgress ? (
-          <ul className="raceProgress">
-            {raceProgress.map((horse) => (
-              <li key={horse.name}>
-                <p>
-                  {horse.placement && <span>{horse.placement + " "}</span>}
-                  {horse.name}
-                </p>
-                <p>{horse.distance}</p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <h1>nothing to show </h1>
-        )}
-        <button onClick={resetRace} />
+    <ThemeProvider theme={theme}>
+      <div className="racePage">
+        <div className="raceContent">
+          {raceProgress ? (
+            <ul className="raceProgress">
+              <p>{"Horse name"}</p>
+              <p>{"Distance traveled"}</p>
+              <p>{"Placement"}</p>
+              {raceProgress.map((horse) => (
+                <li key={horse.name} className="horseStats">
+                  <p>{ horse.name}</p>
+                  <p>{horse.distance}</p>
+                  {horse.placement && <p>{horse.placement}</p>}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <h1>nothing to show </h1>
+          )}
+        </div>
+          <StartRaceButton onClick={resetRace} />
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
